@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Booking Confirmed</title>
+
+<style>
+    body {
+        font-family: Arial;
+        background: #eaf7f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .box {
+        text-align: center;
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        z-index: 2;
+    }
+
+    .checkmark {
+        font-size: 60px;
+        color: green;
+        animation: pop 0.5s ease;
+    }
+
+    @keyframes pop {
+        0% { transform: scale(0); }
+        100% { transform: scale(1); }
+    }
+
+    canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+
+    a {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background: green;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+</style>
+</head>
+
+<body>
+
+<canvas id="confetti"></canvas>
+
+<div class="box">
+    <div class="checkmark">✔</div>
+    <h2>Booking Confirmed!</h2>
+    <p>Your request has been sent successfully.</p>
+
+    <a href="booking.html">Go Back</a>
+</div>
+
+<!-- 🔊 Sound -->
+<audio id="sound" autoplay>
+    <source src="https://www.soundjay.com/buttons/sounds/button-3.mp3" type="audio/mpeg">
+</audio>
+
+<!-- 🎊 Confetti Script -->
+<script>
+const canvas = document.getElementById('confetti');
+const ctx = canvas.getContext('2d');
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let pieces = [];
+
+for (let i = 0; i < 100; i++) {
+    pieces.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 8 + 2,
+        speed: Math.random() * 3 + 1
+    });
+}
+
+function update() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    pieces.forEach(p => {
+        ctx.fillStyle = "green";
+        ctx.fillRect(p.x, p.y, p.size, p.size);
+        p.y += p.speed;
+
+        if (p.y > canvas.height) {
+            p.y = 0;
+        }
+    });
+
+    requestAnimationFrame(update);
+}
+
+update();
+</script>
+
+</body>
+</html>
