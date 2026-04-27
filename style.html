@@ -24,9 +24,9 @@ Our team will review your details and contact you soon for confirmation.
     <title>Resort Booking</title>
 <h3>Room Prices</h3>
 <ul>
-    <li>Deluxe Room – ₹3000 per night</li>
-    <li>Standard Room – ₹3000 per night</li>
-  
+    <li> cotege 1 (wintage) – ₹3000 up to 6 persones </li>
+    <li> cotege 2 – ₹3000 up to 6 persones </li>
+    <li>dormetry -                                    </li>
 </ul>
 <a href="https://wa.me/8590297650" target="_blank">
     <button>Book via WhatsApp</button>
@@ -75,42 +75,137 @@ Our team will review your details and contact you soon for confirmation.
 
     <h3>Book Your Room</h3>
 
-    <!-- ✅ FORM UPDATED -->
- 
+   <form> 
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Troba Farm Village Booking</title>
+
+<style>
+body{
+    font-family:Arial,sans-serif;
+    background:#eaf7f0;
+    margin:0;
+    padding:20px;
+}
+.box{
+    max-width:800px;
+    margin:auto;
+    background:#fff;
+    padding:20px;
+    border-radius:12px;
+}
+input,select,button{
+    width:100%;
+    padding:10px;
+    margin-top:10px;
+}
+button{
+    background:green;
+    color:#fff;
+    border:0;
+    cursor:pointer;
+}
+.disabled{
+    background:#999;
+}
+.qr-box{
+    text-align:center;
+    margin-top:20px;
+    padding:15px;
+    border:1px solid #ccc;
+    border-radius:10px;
+    background:#f9f9f9;
+}
+.qr-box img{
+    width:220px;
+    height:220px;
+    object-fit:cover;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+<h1>Troba Farm Village</h1>
+
 <form action="https://formsubmit.co/trobafarm@gmail.com" method="POST" enctype="multipart/form-data">
+
 <input type="hidden" name="_subject" value="New Resort Booking">
-<input type="hidden" name="_captcha" value="false">
-<label>Full Name</label><input type="text" name="name" required>
-<label>Phone Number</label><input type="tel" name="phone" required>
-<label>Check-in Date</label><input type="date" name="checkin" required>
-<label>Check-out Date</label><input type="date" name="checkout" required>
-<label>Room Type</label><select name="room"><option>Deluxe</option><option>Standard</option></select>
-<label>Number of Guests Coming</label><input type="number" name="guests" min="1" max="20" required>
-<label>ID Proof Type</label><select name="idtype"><option>Aadhaar</option><option>Driving License</option><option>Passport</option><option>Voter ID</option></select>
-<label>ID Number</label><input type="text" name="idnumber" required>
-<label>Upload ID Image</label><input type="file" name="idimage" accept="image/*" required>
-<button type="submit">Book Now</button>
-</form>
-    </form>
 
-    <!-- UPI PAYMENT SECTION -->
-    <div class="upi-section">
-        <h3>Pay Advance (UPI)</h3>
+<label>Full Name</label>
+<input type="text" name="name" placeholder="Full Name" required>
 
-        <a href="upi://pay?pa=yourupiid@upi&pn=troba farm villege&am=500&cu=INR">
-            <button>Pay 1000 Advance</button>
-        </a>
+<label>Phone Number</label>
+<input type="tel" name="phone" placeholder="Phone Number" required>
 
-        <h4>Or Scan & Pay</h4>
-        <img src="" width="200">
+<label>Check-in Date</label>
+<input type="date" id="checkin" name="checkin" required>
 
-        <p>UPI ID: yourupiid@upi</p>
-    </div>
+<label>Check-out Date</label>
+<input type="date" name="checkout" required>
 
+<label>Room Type</label>
+<select name="room">
+<option>2 Bed Room Cottage</option>
+<option>1 Bed Room Cottage</option>
+<option>Dormitory</option>
+</select>
+
+<label>Number of Guests</label>
+<input type="number" name="guests" min="1" max="20" required>
+
+<label>ID Type</label>
+<select name="idtype">
+<option>Aadhaar</option>
+<option>Driving License</option>
+<option>Passport</option>
+<option>Voter ID</option>
+</select>
+
+<label>Upload ID Image</label>
+<div style="border:2px dashed #888;padding:15px;text-align:center;margin-top:10px;border-radius:8px;background:#f9f9f9">
+<p>Select your Aadhaar / Passport / License image</p>
+<input type="file" name="idimage" accept="image/*" required>
 </div>
 
+<!-- UPI QR CODE SECTION -->
+<div class="qr-box">
+<h3>Pay ₹1000 Advance</h3>
+<p>Scan QR Code and Pay</p>
+
+<!-- Replace qr.png with your QR image file -->
+<img src="image 5.jpeg" alt="UPI QR Code">
+
+<p>UPI ID:trobafarm-1@oksbi @upi</p>
+</div>
+
+<label>Payment UTR Number</label>
+<input type="text" name="utr" placeholder="Enter Payment Reference Number" required>
+
+<button type="submit">Book Now</button>
+
+</form>
+</div>
+
+<script>
+// Same Day Booking Lock
+const today = new Date().toISOString().split("T")[0];
+document.getElementById("checkin").setAttribute("min", today);
+
+document.getElementById("checkin").addEventListener("change", function(){
+    if(this.value === today){
+        alert("Same day booking is not allowed. Please select future date.");
+        this.value = "";
+    }
+});
+</script>
+
 </body>
-</html>
+</html>                                                                   
   <h3>Our Location</h3>
 
 <iframe 
