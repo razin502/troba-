@@ -1,26 +1,45 @@
-<div style="text-align:center;">
-<img style="width: 33%;margin-top: 20px;"src="image 4.jpeg">
-  <div>
-<div style="margin-top:40px">
-      <a style="padding-right: 20px;"href="index.html">Home</a>
-  <a href="style.html">booking</a>
-                                                                                          <h2 style="text-align:center;font-size:50px;">welcome</h2>                                 <p style="font-size:20px;text-align:center;line-height:30px;margin-bottom: 50px;">**Welcome to Troba Farm Village!**<br>
-
-A warm welcome to a place where nature and comfort come together. Enjoy our cozy cottages, swimming pool, dormitory, conference hall, and beautiful horticulture garden.<br>
-
-Relax, refresh, and create unforgettable memories with us. We wish you a pleasant and joyful stay!<br>
-</p> 
-
-<div style="text-align:center;">
-<a style="font-size:20px;padding 15px 35px 15px;background-color: red;"href="https://www.trobafarm.com">read more</a>
-
- <hr style="width:60%;>
-
-<img style="width: 33%;"src="image 2.jpeg">
- <img style="width: 60%;"src="image 3.jpeg">
-
-<h2 style="text-align:center;font-size:50px;">camp</h2>                                 
-
-<div style="text-align:center;">
-<video  src="pppp.mp4" controls />
-<div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Troba Farm Village</title>
+<style>
+body{font-family:Arial,sans-serif;margin:0;background:#eaf7f0;color:#222}header,section{padding:20px}.hero{text-align:center;background:#fff}.hero img{max-width:320px;width:90%;border-radius:12px}.nav a{margin:0 10px;color:#0a5;text-decoration:none;font-weight:bold}.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}.gallery img{width:100%;border-radius:10px}.box{max-width:900px;margin:auto;background:#fff;padding:20px;border-radius:14px;box-shadow:0 4px 10px rgba(0,0,0,.08)}input,select,button{width:100%;padding:10px;margin-top:10px;box-sizing:border-box}button{background:green;color:#fff;border:0;border-radius:8px;cursor:pointer}.success{display:none;text-align:center;padding:30px}.checkmark{font-size:60px;color:green}iframe{width:100%;height:320px;border:0;border-radius:12px}canvas{position:fixed;inset:0;pointer-events:none}</style>
+</head>
+<body>
+<canvas id='confetti'></canvas>
+<section class='hero'><img src='image 4.jpeg' alt='Troba Farm'><div class='nav'><a href='#home'>Home</a><a href='#booking'>Booking</a></div>
+<h1 id='home'>Welcome to Troba Farm Village</h1>
+<p>A warm welcome to a place where nature and comfort come together. Enjoy our cozy cottages, swimming pool, dormitory, conference hall, and beautiful horticulture garden.<br>Relax, refresh, and create unforgettable memories with us.</p>
+<a href='https://www.trobafarm.com' target='_blank'><button style='max-width:220px'>Read More</button></a>
+</section>
+<section><div class='gallery'><img src='image 3.jpeg'><img src='image 1.jpeg'></div></section>
+<section id='booking'><div class='box'>
+<h2>Book Your Room</h2>
+<h3>Room Prices</h3>
+<ul><li>Cottage 1 (Vintage) – ₹3000 up to 6 persons</li><li>Cottage 2 – ₹3000 up to 6 persons</li><li>Dormitory – up to 45 persons</li></ul>
+<form id='bookingForm' action='https://formsubmit.co/trobafarm@gmail.com' method='POST' enctype='multipart/form-data'>
+<input type='hidden' name='_subject' value='New Resort Booking'>
+<input type='text' name='name' placeholder='Full Name' required>
+<input type='tel' name='phone' placeholder='Phone Number' required>
+<label>Check-in</label><input type='date' id='checkin' name='checkin' required>
+<label>Check-out</label><input type='date' name='checkout' required>
+<select name='room'><option>Cottage 1 (Vintage)</option><option>Cottage 2</option><option>Dormitory</option></select>
+<input type='number' name='guests' min='1' max='45' placeholder='Guests' required>
+<select name='idtype'><option>Aadhaar</option><option>Driving License</option><option>Passport</option><option>Voter ID</option></select>
+<input type='file' name='idimage' accept='image/*' required>
+<a href='upi://pay?pa=trobafarm-1@oksbi&pn=Troba Farm Village&am=1000&cu=INR'><button type='button'>Pay ₹1000 Advance</button></a>
+<input type='text' name='utr' placeholder='Enter Payment UTR Number' required>
+<button type='submit'>Book Now</button>
+</form>
+</div></section>
+<section><div class='box'><h3>Our Location</h3><iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.320299739664!2d76.69856177481006!3d11.11092868905888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba8891e036f5b7f%3A0x4370e7e2d3f7bbf6!2sTroba%20farm%20village%20(%20troba%20farmstay)!5e1!3m2!1sen!2sin!4v1777179355973!5m2!1sen!2sin'></iframe></div></section>
+<div class='success box' id='successBox'><div class='checkmark'>✔</div><h2>Booking Confirmed!</h2><p>Your request has been sent successfully.</p></div>
+<script>
+const today=new Date().toISOString().split('T')[0];checkin.min=today;checkin.onchange=function(){if(this.value===today){alert('Same day booking is not allowed');this.value='';}};
+bookingForm.addEventListener('submit',function(){setTimeout(()=>{document.getElementById('successBox').style.display='block';confettiStart();},500);});
+const c=document.getElementById('confetti'),x=c.getContext('2d');function resize(){c.width=innerWidth;c.height=innerHeight}resize();onresize=resize;let pcs=[];function confettiStart(){pcs=[];for(let i=0;i<120;i++)pcs.push({x:Math.random()*c.width,y:Math.random()*c.height-300,s:Math.random()*8+2,v:Math.random()*3+1});animate();}
+function animate(){x.clearRect(0,0,c.width,c.height);pcs.forEach(p=>{x.fillStyle='green';x.fillRect(p.x,p.y,p.s,p.s);p.y+=p.v;if(p.y>c.height)p.y=-10;});requestAnimationFrame(animate);} 
+</script>
+</body></html>
