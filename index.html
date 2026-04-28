@@ -23,7 +23,7 @@ body{font-family:Arial,sans-serif;margin:0;background:#eaf7f0;color:#222}header,
 <input type='hidden' name='_subject' value='New Resort Booking'>
 <input type='text' name='name' placeholder='Full Name' required>
 <input type='tel' name='phone' placeholder='Phone Number' required>
-<label>Check-in</label><input type='date' id='checkin' name='checkin' required>
+<label>Check-in</label><input type="date" id="checkin" name='checkin' required>
 <label>Check-out</label><input type='date' name='checkout' required>
 <select name='room'><option>Cottage 1 (Vintage)</option><option>Cottage 2</option><option>Dormitory</option></select>
 <input type='number' name='guests' min='1' max='45' placeholder='Guests' required>
@@ -47,4 +47,18 @@ bookingForm.addEventListener('submit',function(){setTimeout(()=>{document.getEle
 const c=document.getElementById('confetti'),x=c.getContext('2d');function resize(){c.width=innerWidth;c.height=innerHeight}resize();onresize=resize;let pcs=[];function confettiStart(){pcs=[];for(let i=0;i<120;i++)pcs.push({x:Math.random()*c.width,y:Math.random()*c.height-300,s:Math.random()*8+2,v:Math.random()*3+1});animate();}
 function animate(){x.clearRect(0,0,c.width,c.height);pcs.forEach(p=>{x.fillStyle='green';x.fillRect(p.x,p.y,p.s,p.s);p.y+=p.v;if(p.y>c.height)p.y=-10;});requestAnimationFrame(animate);} 
 </script>
+<script>
+const today = new Date().toISOString().split("T")[0];
+const checkin = document.getElementById("checkin");
+
+checkin.min = today;
+
+checkin.addEventListener("change", function () {
+    if (this.value === today) {
+        alert("Same day booking is not allowed. Please select a future date.");
+        this.value = "";
+    }
+});
+</script>
+
 </body></html>
